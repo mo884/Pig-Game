@@ -17,18 +17,8 @@ Score1El.textContent=scorse[1];
 console.log(Dice.src);
 //hidden dice
 Dice.classList.add('hidden');
-
-//choose number from dice
-RolleBtn.addEventListener('click',function(){
- const number = Math.trunc(Math.random()*5)+1;
- const Image = ['dice-1.png','dice-2.png','dice-3.png','dice-4.png','dice-5.png'];
- Dice.classList.remove('hidden');
- Dice.src='/img/'+Image[number-1];
- if(number !==1)
- {
-    Score0 = Score0+number;
-    document.getElementById(`current--${AcrivePlayer}`).textContent = Score0;
- }else{
+//switch user
+let SwitchUser=function(){
    document.getElementById(`current--${AcrivePlayer}`).textContent = 0;
    console.log(AcrivePlayer);
    if(AcrivePlayer ===0){
@@ -45,6 +35,27 @@ RolleBtn.addEventListener('click',function(){
    Score0 =0;
    Score0El.textContent=scorse[0];
    Score1El.textContent=scorse[1];
+}
+//choose number from dice
+RolleBtn.addEventListener('click',function(){
+ const number = Math.trunc(Math.random()*5)+1;
+ const Image = ['dice-1.png','dice-2.png','dice-3.png','dice-4.png','dice-5.png'];
+ Dice.classList.remove('hidden');
+ Dice.src='/img/'+Image[number-1];
+
+ if(number !==1)
+ {
+    Score0 = Score0+number;
+    document.getElementById(`current--${AcrivePlayer}`).textContent = Score0;
+ }else{
+   SwitchUser();
  }
 
+});
+HoldBtn.addEventListener('click',function(){
+   SwitchUser();
+   if(scorse[AcrivePlayer]>100)
+   {
+      Dice.classList.add('hidden');
+   }
 });
