@@ -87,6 +87,5 @@ NewBtn.addEventListener('click',function(){
     Player0.classList.add('player--active');
     Player1.classList.remove('player--active');
     document.querySelector('body').style.backgroundImage ='linear-gradient(to top left, #000000 0%, #615757 100%)';
-
-
-   });
+    document.querySelector('body').style.
+});
